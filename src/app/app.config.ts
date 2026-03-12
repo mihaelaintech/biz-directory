@@ -5,6 +5,11 @@ import { provideAuth0 } from '@auth0/auth0-angular';
 
 import { routes } from './app.routes';
 
+const redirectUri =
+  window.location.hostname === 'mihaelaintech.github.io'
+    ? 'https://mihaelaintech.github.io/biz-directory/'
+    : window.location.origin;
+
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
@@ -13,7 +18,7 @@ export const appConfig: ApplicationConfig = {
       domain: 'dev-orl7yj45205nf4fo.us.auth0.com',
       clientId: 'mcYW7fVW0kJDbwpP6iwIKJyzdugiFWhU',
       authorizationParams: {
-        redirect_uri: window.location.origin
+        redirect_uri: redirectUri
       }
     })
   ]
