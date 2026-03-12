@@ -13,20 +13,20 @@ export class WebService {
 
   getBusinesses(page: number): Observable<any[]> {
     return this.http.get<any[]>(
-      'http://127.0.0.1:5000/api/v1.0/businesses?pn=' + page
+      'https://biz-directory-api.onrender.com/api/v1.0/businesses?pn=' + page
     );
   }
 
   getBusiness(id: any): Observable<any> {
     this.businessID = id;
     return this.http.get<any>(
-      'http://127.0.0.1:5000/api/v1.0/businesses/' + id
+      'https://biz-directory-api.onrender.com/api/v1.0/businesses/' + id
     );
   }
 
   getReviews(id: any): Observable<any[]> {
     return this.http.get<any[]>(
-      'http://127.0.0.1:5000/api/v1.0/businesses/' + id + '/reviews'
+      'https://biz-directory-api.onrender.com/api/v1.0/businesses/' + id + '/reviews'
     );
   }
 
@@ -46,7 +46,7 @@ export class WebService {
     postData.append('date', todayDate);
 
     return this.http.post(
-      'http://127.0.0.1:5000/api/v1.0/businesses/' + this.businessID + '/reviews',
+      'https://biz-directory-api.onrender.com/api/v1.0/businesses/' + this.businessID + '/reviews',
       postData
     );
   }
