@@ -15,14 +15,11 @@ export class NavComponent {
   constructor(public authService: AuthService) {}
 
   logout() {
-    alert('logout() fired');
+  alert('logout() fired');
 
-    this.authService.logout({
-      logoutParams: {
-        returnTo: 'https://mihaelaintech.github.io/biz-directory/'
-      }
-    });
-  }
-
+  this.authService.logout({
+    logoutParams: {
+      returnTo: 'https://mihaelaintech.github.io/biz-directory/'
+    }
+  });
 }
-
