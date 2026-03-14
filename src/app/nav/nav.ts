@@ -11,18 +11,14 @@ import { AuthService } from '@auth0/auth0-angular';
   styleUrls: ['./nav.css']
 })
 export class NavComponent {
-
   constructor(public authService: AuthService) {}
 
   logout() {
-    alert('logout() fired');
-
     this.authService.logout({
       logoutParams: {
         returnTo: 'https://mihaelaintech.github.io/biz-directory/'
       }
     });
   }
-
 }
 
