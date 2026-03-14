@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { Observable } from 'rxjs';
 import { WebService } from './web.service';
 
 @Component({
@@ -12,7 +13,7 @@ import { WebService } from './web.service';
 })
 export class BusinessesComponent implements OnInit {
 
-  business_list: any;
+  business_list!: Observable<any[]>;
   page: number = 1;
 
   constructor(public webService: WebService) {}
@@ -26,7 +27,7 @@ export class BusinessesComponent implements OnInit {
 
   loadBusinesses(): void {
     this.business_list = this.webService.getBusinesses(this.page);
-    sessionStorage['page'] = this.page;
+    sessionStorage['page'] = this.page.toString();
   }
 
   previousPage(): void {
