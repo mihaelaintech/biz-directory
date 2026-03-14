@@ -15,16 +15,10 @@ export class NavComponent {
   constructor(public authService: AuthService) {}
 
   logout() {
-    const returnTo =
-      window.location.hostname === 'mihaelaintech.github.io'
-        ? 'https://mihaelaintech.github.io/biz-directory/'
-        : window.location.origin;
-
     this.authService.logout({
       logoutParams: {
-        returnTo: returnTo
+        returnTo: 'https://mihaelaintech.github.io/biz-directory/'
       }
     });
   }
-
 }
