@@ -15,21 +15,14 @@ export class NavComponent {
   constructor(public authService: AuthService) {}
 
   logout() {
-
-    let returnUrl = '';
-
-    if (window.location.hostname === 'localhost') {
-      returnUrl = 'http://localhost:4201';
-    } else {
-      returnUrl = 'https://mihaelaintech.github.io/biz-directory/';
-    }
+    alert('logout() fired');
 
     this.authService.logout({
       logoutParams: {
-        returnTo: returnUrl
+        returnTo: 'https://mihaelaintech.github.io/biz-directory/'
       }
     });
-
   }
 
 }
+
