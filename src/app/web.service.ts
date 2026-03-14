@@ -8,25 +8,26 @@ import { Observable } from 'rxjs';
 export class WebService {
 
   private businessID: any;
+  private apiBaseUrl = 'https://biz-directory-api.onrender.com';
 
   constructor(private http: HttpClient) {}
 
   getBusinesses(page: number): Observable<any[]> {
     return this.http.get<any[]>(
-      'https://biz-directory-api.onrender.com/api/v1.0/businesses?pn=' + page
+      `${this.apiBaseUrl}/api/v1.0/businesses?pn=${page}`
     );
   }
 
   getBusiness(id: any): Observable<any> {
     this.businessID = id;
     return this.http.get<any>(
-      'https://biz-directory-api.onrender.com/api/v1.0/businesses/' + id
+      `${this.apiBaseUrl}/api/v1.0/businesses/${id}`
     );
   }
 
   getReviews(id: any): Observable<any[]> {
     return this.http.get<any[]>(
-      'https://biz-directory-api.onrender.com/api/v1.0/businesses/' + id + '/reviews'
+      `${this.apiBaseUrl}/api/v1.0/businesses/${id}/reviews`
     );
   }
 
@@ -46,7 +47,7 @@ export class WebService {
     postData.append('date', todayDate);
 
     return this.http.post(
-      'https://biz-directory-api.onrender.com/api/v1.0/businesses/' + this.businessID + '/reviews',
+      `${this.apiBaseUrl}/api/v1.0/businesses/${this.businessID}/reviews`,
       postData
     );
   }
