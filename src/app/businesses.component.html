@@ -1,24 +1,32 @@
 <div class="container mt-4">
   <h2>Businesses</h2>
 
-  <div class="row">
-    <div class="col-md-4" *ngFor="let business of business_list | async">
-      <div class="card mb-3"
-           style="cursor:pointer"
-           [routerLink]="['/businesses', business.id]">
+  <div *ngIf="business_list | async as businesses; else loading">
+    <div class="row">
+      <div class="col-md-4" *ngFor="let business of businesses">
+        <div class="card mb-3"
+             style="cursor:pointer"
+             [routerLink]="['/businesses', business.id]">
 
-        <div class="card-body">
-          <h5 class="card-title">{{ business.name }}</h5>
-          <p>ID: {{ business.id }}</p>
-          <p>City: {{ business.city }}</p>
-          <p>Reviews: {{ business.review_count }}</p>
+          <div class="card-body">
+            <h5 class="card-title">{{ business.name }}</h5>
+            <p>ID: {{ business.id }}</p>
+            <p>City: {{ business.city }}</p>
+            <p>Reviews: {{ business.review_count }}</p>
+          </div>
         </div>
       </div>
     </div>
+
+    <br>
+
+    <button class="btn btn-primary" (click)="previousPage()">Previous</button>
+    <button class="btn btn-primary float-end" (click)="nextPage()">Next</button>
   </div>
 
-  <br>
-
-  <button class="btn btn-primary" (click)="previousPage()">Previous</button>
-  <button class="btn btn-primary float-end" (click)="nextPage()">Next</button>
+  <ng-template #loading>
+    <div class="alert alert-info mt-3">
+      Loading businesses... The backend may take up to a minute to wake up.
+    </div>
+  </ng-template>
 </div>
